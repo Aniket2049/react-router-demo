@@ -1,5 +1,4 @@
 export default function Navbar() {
-  const path = window.location.pathname;
   return (
     <nav className="nav">
       <a href="/" className="site-title">
@@ -14,9 +13,13 @@ export default function Navbar() {
 }
 
 function CustomLink({ href, children, ...props }) {
+  const path = window.location.pathname;
+
   return (
-    <li>
-      <a href={href}>{children}</a>
+    <li className={path == href ? "active" : ""}>
+      <a href={href} {...props}>
+        {children}
+      </a>
     </li>
   );
 }
