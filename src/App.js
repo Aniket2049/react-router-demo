@@ -2,26 +2,19 @@ import Navbar from "./Navbar";
 import Home from "./pages/Home";
 import Pricing from "./pages/Pricing";
 import About from "./pages/About";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  let pageComponent;
-
-  switch (window.location.pathname) {
-    case "/":
-      pageComponent = <Home />;
-      break;
-    case "/pricing":
-      pageComponent = <Pricing />;
-      break;
-    case "/about":
-      pageComponent = <About />;
-      break;
-  }
-
   return (
     <>
       <Navbar />
-      <div className="container">{pageComponent}</div>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
     </>
   );
 }
